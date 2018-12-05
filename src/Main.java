@@ -1,5 +1,4 @@
-import adafruithat.AdafruitServo;
-import adafruithat.AdafruitServoHat;
+import kinematics.Robot;
 import util.Trig;
 
 public class Main{
@@ -9,7 +8,7 @@ public class Main{
 	public static void main(String[] args) {
 
 		
-		AdafruitServoHat servoHat;
+	/*	AdafruitServoHat servoHat;
 		int servoHATAddress = 0X40;
 		AdafruitServo servo1;
 
@@ -31,13 +30,13 @@ public class Main{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		servo1.setPosition(90.0f);
+		servo1.setPosition(90.0f);*/
 		
 		//joystick = new Joystick();
 		//mathTest(0,0,-5.0, true);
 		//mathTest(0,0,-5.0, false);
-		//Robot robot = new Robot();
-		//robot.start();
+		Robot robot = new Robot();
+		robot.start();
 		//System.out.println(Body.getLocalCornerPos(new Position(0,0,0,0,32,10))[0].x);
 		
 		/*for(int i = -13; i < 14; i++){

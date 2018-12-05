@@ -7,9 +7,9 @@ import util.Trig;
 
 public class Leg {
 	
-	public static final double FEMUR = 1.6;
-	public static final double TIBIA = 2.3585;
-	public static final double TARSUS = 3.4;
+	public static final double FEMUR = 44.0/25.4;
+	public static final double TIBIA = 74.0/25.4;
+	public static final double TARSUS = 112.72/25.4;
 	public static final double SERVOWIDTH = 1.927;
 	
 	private double hipAngle = 90;
@@ -62,7 +62,20 @@ public class Leg {
 	}
 	
 	public void calculateAngles(double x, double y, double z){
-		if(!left) y = -y;
+		
+		hipAngle = Trig.atan2(x, -z);
+		double h = Math.sqrt(x*x + z*z) - FEMUR;
+		double ltotal = Math.sqrt(h*h + y*y);
+		double hAngle = Trig.atan2(y,  h);
+		
+		ankleAngle = Trig.acos((TIBIA*TIBIA + TARSUS*TARSUS - ltotal*ltotal)/(2*TIBIA*TARSUS));
+		kneeAngle = Trig.sin(ankleAngle)*TARSUS/ltotal + hAngle;
+		
+		hipAngle += 90.0;
+		kneeAngle = 180.0 - (kneeAngle + 120.0);
+		ankleAngle = 180.0 - (ankleAngle - 12.72);
+		
+		/*if(!left) y = -y;
 		
 		double C = Math.sqrt(z*z + y*y);
 		
@@ -79,7 +92,7 @@ public class Leg {
 		double absoluteKneeAngle = Trig.acos((L*L + TIBIA*TIBIA - TARSUS*TARSUS)/(2*L*TIBIA));
 		kneeAngle = kneeCenter - (absoluteKneeAngle - Trig.atan2(x, B));
 		if(left) ankleAngle = ankleCenter + (180 - Trig.acos((TIBIA*TIBIA + TARSUS*TARSUS - L*L)/(2*TIBIA*TARSUS)));
-		else ankleAngle = 180 - (ankleCenter + (180 - Trig.acos((TIBIA*TIBIA + TARSUS*TARSUS - L*L)/(2*TIBIA*TARSUS))));
+		else ankleAngle = 180 - (ankleCenter + (180 - Trig.acos((TIBIA*TIBIA + TARSUS*TARSUS - L*L)/(2*TIBIA*TARSUS))));*/
 		
 		//System.out.println(kneeAngle);
 
