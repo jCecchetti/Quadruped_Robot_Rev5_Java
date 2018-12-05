@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project RPI_Robot_Rev2">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <!--define folder properties-->
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.workspace" value="${dir.buildfile}/.."/>
+    <property name="dir.jarfile" value="${dir.workspace}/quad_Rev1"/>
+    <target name="create_run_jar">
+        <jar destfile="${dir.jarfile}/mc.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Main-Class" value="Main"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+            <fileset dir="${dir.buildfile}/bin"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/libraries/pi4j-1.2-SNAPSHOT/lib/junit.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/libraries/pi4j-1.2-SNAPSHOT/lib/pi4j-core-javadoc.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/libraries/pi4j-1.2-SNAPSHOT/lib/pi4j-core-sources.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/libraries/pi4j-1.2-SNAPSHOT/lib/pi4j-core.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/libraries/pi4j-1.2-SNAPSHOT/lib/pi4j-device-javadoc.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/libraries/pi4j-1.2-SNAPSHOT/lib/pi4j-device-sources.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/libraries/pi4j-1.2-SNAPSHOT/lib/pi4j-device.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/libraries/pi4j-1.2-SNAPSHOT/lib/pi4j-example-javadoc.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/libraries/pi4j-1.2-SNAPSHOT/lib/pi4j-example-sources.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/libraries/pi4j-1.2-SNAPSHOT/lib/pi4j-example.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/libraries/pi4j-1.2-SNAPSHOT/lib/pi4j-gpio-extension-javadoc.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/libraries/pi4j-1.2-SNAPSHOT/lib/pi4j-gpio-extension-sources.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/libraries/pi4j-1.2-SNAPSHOT/lib/pi4j-gpio-extension.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/libraries/Jamepad.jar"/>
+        </jar>
+    </target>
+</project>
